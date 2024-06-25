@@ -1,4 +1,4 @@
-Source code from Chapter 16, *RandomRectangle: Building aRectangle Display Program* (RandomRectangle)
+Source code from Chapter 16, *RandomRectangle: Building a Rectangle Display Program* (RandomRectangle)
 
  - CRandomRectanglePane.cp
  - CRectangleApp.c
