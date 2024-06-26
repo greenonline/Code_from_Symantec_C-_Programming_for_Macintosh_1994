@@ -27,6 +27,7 @@ This can be performed using Symantec C++ version 7. The LF now show up and it is
   - or ensure that your cursor was at the start of the text fle before opening the **Find** dialog 
 - Then hit the **Find** button to find the next occurence of the LF character
 - Finally, select **Replace All** from the **Search** menu (there is no keyboard shortcut for **Replace All**)
+- On subsequent files, once opened, you can just select **Replace All** - there is no need to reopen the **Find** dialog again.
 
 Symantec C++ 8.6 appears to recognise the LF from OSX, without needing the Find and Replace with CR, as the source files are displayed correctly. However, there seems to be an issue when compiling, if the LF are not replaced - weird errors occur.
 
