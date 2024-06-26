@@ -63,7 +63,7 @@ resource 'vers' (1) {
     0x0,
     verUS, 
     "RandomRectangles 1.1",
-    "1 . 1 , from Symantec C++ Programming for t "
+    "1.1, from Symantec C++ Programming for t"
     "he Macintosh."
 };
 
@@ -74,7 +74,7 @@ resource 'vers' (2) { 0x1,
     0x0,
     verUS,
     "RandomRectangles 1.1",
-    "1.1 ©1993-94, Rhodes and McKeehan.•
+    "1.1 ©1993-94, Rhodes and McKeehan."
 };
 
 
@@ -83,8 +83,8 @@ resource 'vers' (2) { 0x1,
     textMenuProc, 0x7FFFFFFE, enabled,
     "File", 
     {
-        "Close#4", noIcon, •w•, noMark, plain,
-        "Quit#1", noIcon, •a•, noMark, plain
+        "Close#4", noIcon, "W", noMark, plain,
+        "Quit#1", noIcon, "Q", noMark, plain
     } 
 };
 
@@ -94,7 +94,7 @@ resource 'MBAR' (1, preload) {
     } 
 };
 
-resource 'SICN' (200, "TCL sicns•, purgeable, preload) {
+resource 'SICN' (200, "TCL sicns", purgeable, preload) {
     {
         $"FFFF 8001 8001 9FC1 9041 907D 9045 9045" 
         $"9045 9FC5 8405 8405 8405 87FD 8001 FFFF", 
@@ -130,7 +130,7 @@ resource 'MENU' (3, "Edit", preload) {
     "Edit", 
     {
         "Undo#16", noIcon, "Z", noMark, plain ,
-        "·", noIcon, noKey, noMark, plain,
+        "-", noIcon, noKey, noMark, plain,
         "Cut#18", noIcon, "X", noMark, plain,
         "Copy#19", noIcon , "C", noMark, plain,
         "Paste#20", noIcon, "V", noMark, plain, 
@@ -162,4 +162,3 @@ resource 'CNTL' (300, "Scroll Bar", preload) {
     0, 
     ""
 };
-
