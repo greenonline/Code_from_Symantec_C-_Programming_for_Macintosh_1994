@@ -11,41 +11,62 @@ short aWidth, short aHeight,
 short aHEncl, short aVEncl,
 SizingOption aHSizing, SizingOption aVSizing) : CPane(anEnclosure, aSupervisor, aWidth, aHeight,
 aHEncl, aVEncl, aHSizing, aVSizing)
-
-
-
 {
     TCL_END_CONSTRUCTOR
 }
-void CRandomRectanglePane::DrawRectangleinRandomColor(const Rect *r) {
-RGBColor aColor; PixPatHandle myPixPat;
-aColor.red = fRandom.Value(); fRandom.Advance();
-aColor.blue =fRandom.Value(); fRandom.Advance();
-aColor.green =fRandom.Value(); fRandom.Advance();
-myPixPat =NewPixPat(); MakeRGBPat(myPixPat, &aColor); FillCRect(r, myPixPat); DisposPixPat(myPixPat);
+
+void CRandomRectanglePane::DrawRectangleInRandomColor(const Rect *r) {
+    RGBColor aColor; 
+    PixPatHandle myPixPat;
+
+    aColor.red = fRandom.Value(); 
+    fRandom.Advance();
+    aColor.blue =fRandom.Value(); 
+    fRandom.Advance();
+    aColor.green =fRandom.Value(); 
+    fRandom.Advance();
+
+    myPixPat =NewPixPat(); 
+    MakeRGBPat(myPixPat, &aColor); 
+    FillCRect(r, myPixPat); 
+    DisposPixPat(myPixPat);
 }
 
-void CRandomRectanglePane::DrawRectangleinRandomPattern(const Rect *r) {
-Pattern aPattern;
-GetindPattern(&aPattern, sysPatListID, fRandom.ValueinRange(1, 31)); fRandom.Advance();
-FillRect(r, &aPattern);
+void CRandomRectanglePane::DrawRectangleInRandomPattern(const Rect *r) 
+{
+    Pattern aPattern;
+
+    GetIndPattern(&aPattern, sysPatListID, fRandom.ValueInRange(1, 31)); 
+    fRandom.Advance();
+    FillRect(r, &aPattern);
 }
-void CRandomRectanglePane::Dawdle(long *maxSleep) {
-Rect Point Point LongRect
-r;
-p1 j
-p2; frameSize;
-GetFrame(&frameSize);
-p1.h = fRandom.ValueinRange(frameSize.left, frameSize.right); fRandom.Advance();
-p1.v =fRandom.ValueinRange(frameSize.top, frameSize.bottom);
 
+void CRandomRectanglePane::Dawdle(long *maxSleep) 
+{
+    Rect r;
+    Point p1;
+    Point p2; 
+    LongRect frameSize;
 
- fRandom.Advance()i
-p2.h = fRandom.ValuelnRange(frameSize.left, frameSize.right); fRandom.Advance()i
-p2.v = fRandom.ValuelnRange(frameSize.top, frameSize.bottom); fRandom.Advance();
-::Pt2Rect(p1, p2, &r);
-Prepare(); II prepare coordinate system for drawing
-if (gSystem.hasColorQD) DrawRectanglelnRandomColor(&r);
-else DrawRectanglelnRandomPattern(&r);
-*maxSleep =20; II one rectangle every 113 second
+    GetFrame(&frameSize);
+
+    p1.h = fRandom.ValueInRange(frameSize.left, frameSize.right); 
+    fRandom.Advance();
+    p1.v =fRandom.ValueInRange(frameSize.top, frameSize.bottom);
+    fRandom.Advance();
+    p2.h = fRandom.ValueInRange(frameSize.left, frameSize.right); 
+    fRandom.Advance();
+    p2.v = fRandom.ValueInRange(frameSize.top, frameSize.bottom); 
+    fRandom.Advance();
+
+    ::Pt2Rect(p1, p2, &r);
+
+    Prepare(); // prepare coordinate system for drawing
+
+    if (gSystem.hasColorQD)
+        DrawRectangleInRandomColor(&r);
+    else 
+        DrawRectangleInRandomPattern(&r);
+
+    *maxSleep =20; // one rectangle every 113 second
 }

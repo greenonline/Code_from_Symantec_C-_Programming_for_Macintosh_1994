@@ -11,20 +11,20 @@ TRandom::TRandom() {
 }
 
 TRandom::TRandom(unsigned long seed) {
-fValue = seed;
+    fValue = seed;
 }
 
 void TRandom::Advance() 
 {
-fValue = fValue * 12345 + 6789;
+    fValue = fValue * 12345 + 6789;
 }
 
 unsigned long TRandom::Value()
 {
-return fValue;
+    return fValue;
 }
 
-unsigned long TRandom::ValueinRange(unsigned long low, unsigned long high)
+unsigned long TRandom::ValueInRange(unsigned long low, unsigned long high)
 {
-return (Value() % (high - low+ 1)) + low;
+    return (Value() % (high - low+ 1)) + low;
 }

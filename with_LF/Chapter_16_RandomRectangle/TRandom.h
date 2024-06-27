@@ -10,7 +10,7 @@ public:
 
     void Advance();
     unsigned long Value();
-    unsigned long ValueinRange(unsigned long low, unsigned long high);
+    unsigned long ValueInRange(unsigned long low, unsigned long high);
 private:
     unsigned long fValue;
 };

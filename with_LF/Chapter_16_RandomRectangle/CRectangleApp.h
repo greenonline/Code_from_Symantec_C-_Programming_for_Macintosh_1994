@@ -14,6 +14,6 @@
 
 class CRectangleApp: public CApplication { 
 public:
-    CRectangleApp()i
+    CRectangleApp();
     virtual void StartUpAction(short numPreloads);
-}i
+};
