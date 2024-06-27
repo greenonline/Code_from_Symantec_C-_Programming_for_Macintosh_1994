@@ -3,7 +3,7 @@
 
 
 
-// Copyright© 1993, Neil Rhodes and Julie McKeehan. All rights reserved.
+// Copyright © 1993, Neil Rhodes and Julie McKeehan. All rights reserved.
 
 
 #include "CTextDoc.h" 
@@ -15,7 +15,7 @@
 #include <CDecorator.h> 
 #include <TBUtilities.h>
 
-extern Cdesktop *gDesktop;
+extern CDesktop *gDesktop;
 extern OSType gSignature;
 extern CDecorator *gDecorator;
 
@@ -30,7 +30,7 @@ void CTextDoc::NewFile()
     itsWindow->GetTitle(wTitle);
     wCount = gDecorator->GetWCount();
     ::NumToString(wCount, wNumber);
-    ::ConcatPStrings(wTitle, 11 \p- 11 ) ;
+    ::ConcatPStrings(wTitle, "\p-");
     ::ConcatPStrings(wTitle, wNumber); 
     itsWindow->SetTitle(wTitle);
 
@@ -55,7 +55,7 @@ void CTextDoc::BuildWindow()
 sizELASTIC, sizELASTIC, kHasHorizontalScrollbar, kHasVerticalScrollbar, kHasGrowBox); 
     theScrollPane->FitToEnclFrame(kFitHorizontal, kFitVertical);
 
-    CEditText *thePane =new CEditText(theScrollPane, this, 1, 1, 0, 0, sizELASTIC, sizELASTIC, kEditT extWidth);
+    CEditText *thePane =new CEditText(theScrollPane, this, 1, 1, 0, 0, sizELASTIC, sizELASTIC, kEditTextWidth);
     itsGopher = thePane;
     itsMainPane = thePane;
     fEditText = thePane; 
@@ -64,9 +64,9 @@ sizELASTIC, sizELASTIC, kHasHorizontalScrollbar, kHasVerticalScrollbar, kHasGrow
 
     Rect margin;
     ::SetRect(&margin, 2, 2, -2, -2);
-    thePane->ChangeSize(&margin, lkRedraw);
+    thePane->ChangeSize(&margin, !kRedraw);
 
-    gDecorator->PlaceNeWWindow(itsWindow);
+    gDecorator->PlaceNewWindow(itsWindow);
 }
 
 void CTextDoc::OpenFile(SFReply *macReply){
@@ -85,12 +85,12 @@ void CTextDoc::OpenFile(SFReply *macReply){
         if (theDataFile->GetLength() > kMaxFileSize)
 ::Failure(paramErr, excExceedTELimit); theData =theDataFile->ReadAll();
     } CATCH { 
-        theDataFile·>Close()i
+        theDataFile->Close();
     }
     ENDTRY;
 
     TRY {
-        theDataFile·>Close();
+        theDataFile->Close();
         BuildWindow();
         fEditText->SetTextHandle(theData);
     } CATCH {
@@ -105,25 +105,26 @@ void CTextDoc::OpenFile(SFReply *macReply){
     itsWindow->Select();
 }
 
-Boolean CTextDoc::DoSave() {
+Boolean CTextDoc::DoSave() 
+{
     Handle theData;
 
     if (itsFile == NULL)
         return(DoSaveFileAs());
     else {
-    CDataFile *theDataFile = (CDataFile *) itsFile;
-    theData =fEditText->GetTextHandle();
-    theDataFile->Open(fsWrPerm);
-    TRY {
-        theDataFile->WriteAll(theData);
-    } CATCH {
+        CDataFile *theDataFile = (CDataFile *) itsFile;
+        theData =fEditText->GetTextHandle();
+        theDataFile->Open(fsWrPerm);
+        TRY {
+            theDataFile->WriteAll(theData);
+        } CATCH {
+            theDataFile->Close();
+        }
+        ENDTRY;
         theDataFile->Close();
+        dirty = FALSE;
+        return(TRUE);
     }
-    ENDTRY;
-
-    theDataFile->Close();
-    dirty =FALSE;
-    return(TRUE);
 }
 
 Boolean CTextDoc::DoSaveAs(SFReply *macSFReply)

@@ -2,7 +2,7 @@
 /* CTextApp.cp */
 
 
-// Copyright© 1993, Neil Rhodes and Julie McKeehan. All rights reserved.
+// Copyright © 1993, Neil Rhodes and Julie McKeehan. All rights reserved.
 
 #include "CTextApp.h" 
 #include "CTextDoc.h" 

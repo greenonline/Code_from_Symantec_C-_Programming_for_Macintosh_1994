@@ -5,11 +5,11 @@
 // Copyright© 1993, Neil Rhodes and Julie McKeehan. All rights reserved.  
 
 #include "Types.r"
-#include •sysTypes.r"
+#include "sysTypes.r"
 
-resource 'WIND' (500, "Text window•, purgeable, preload) { 
+resource 'WIND' (500, "Text window", purgeable, preload) { 
     {68, 44, 254, 286},
-    zoomoocProc,
+    zoomDocProc,
     invisible,
     goAway,
     0x0,
@@ -76,8 +76,8 @@ resource 'MENU' (2, "File", preload) {
     enabled,
     "File", 
     {
-        "New#2", noIcon , "N", noMark, plain , 
-        "Open#3", n o i c o n , "O", noMark, plain,
+        "New#2", noIcon, "N", noMark, plain , 
+        "Open#3", noIcon, "O", noMark, plain,
         "-", noIcon, noKey, noMark, plain, 
         "Close#4", noIcon, "W", noMark, plain, 
         "Save#5", noIcon, "S", noMark, plain,
@@ -90,7 +90,7 @@ resource 'MENU' (2, "File", preload) {
     }
 };
 
-resource 'MBAR' (11 preload) { 
+resource 'MBAR' (1, preload) { 
     { 1, 2, 3
     } 
 };
@@ -124,7 +124,7 @@ resource 'MENU' (3, "Edit", preload) {
         "Undo#16", noIcon, "Z", noMark, plain,
         "-", noIcon, noKey, noMark, plain,
         "Cut#18", noIcon, "X", noMark, plain,
-        "Copy#19", n o i c o n , "C", noMark, plain,
+        "Copy#19", noIcon, "C", noMark, plain,
         "Paste#20", noIcon, "V", noMark, plain, 
         "Clear#21", noIcon, noKey, noMark, plain, 
         "Select All#23", noIcon, "A", noMark, plain,
@@ -153,6 +153,7 @@ resource 'CNTL' (300, "Scroll Bar", preload) {
     0,
     scrollBarProc,
     0,
+    ""
 };
 
 resource 'MENU' (10, "Font") { 
@@ -182,8 +183,8 @@ textMenuProc, allEnabled, enabled, "Style",
         "Plain Text#30", noIcon, "P", check, plain, 
         "Bold#31", noIcon, "B", noMark, 1, 
         "Italic#32", noIcon, "I", noMark, 2, 
-        "Underline#33", noIcon, •u•, noMark, 4, 
-        "Outline#34", noIcon, noKey, noMark, a, 
+        "Underline#33", noIcon, "U", noMark, 4, 
+        "Outline#34", noIcon, noKey, noMark, 8, 
         "Shadow#35", noIcon, noKey, noMark, 16, 
         "Condensed#36", noIcon, noKey, noMark, 32, 
         "Extended#37", noIcon, noKey, noMark, 64
