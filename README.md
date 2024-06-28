@@ -6,6 +6,7 @@ Note: Two directories are provided, both of which contain the same source code. 
 See also:
 
 - [Source code for Symantec C++ Programming for Macintosh (1994)](https://gr33nonline.wordpress.com/2024/05/04/source-code-for-symantec-c-programming-for-macintosh-1994/)
+  -  For a list of errata and other notes 
 - [Inside Macintosh Links](https://gr33nonline.wordpress.com/2024/04/24/inside-macintosh-links/)
   
 ---
