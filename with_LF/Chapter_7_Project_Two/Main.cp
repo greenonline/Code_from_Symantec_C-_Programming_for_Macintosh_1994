@@ -6,6 +6,6 @@
 #include <stdio.h>
 
 void main() {
-    printf("l\sdl\sd\n", kFoo, kBar); 
+    printf("%d %d\n", kFoo, kBar); 
     return 0;
 }
