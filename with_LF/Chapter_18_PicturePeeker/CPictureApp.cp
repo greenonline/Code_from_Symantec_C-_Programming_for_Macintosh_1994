@@ -20,8 +20,7 @@ const Size kToolboxBalance = 20000;
 
 extern OSType gSignature;  // The application's signature
 
-CPictureApp::CPictureApp() CAboutBoxApplication(kExtraMasters, kRainyDayFund, kCriticalBalance, kToolboxBalance) 
-
+CPictureApp::CPictureApp() : CAboutBoxApplication(kExtraMasters, kRainyDayFund, kCriticalBalance, kToolboxBalance)
 {
     TCL_END_CONSTRUCTOR
 }

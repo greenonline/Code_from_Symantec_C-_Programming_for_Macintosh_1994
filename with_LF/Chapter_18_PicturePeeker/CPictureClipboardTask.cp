@@ -1,17 +1,16 @@
 /* Chapter 18 - PicturePeeker */
 /* CPictureClipboardTask.cp */
 
-// Copyright© 1993, Neil Rhodes and Julie McKeehan. All rights reserved. 
+// Copyright © 1993, Neil Rhodes and Julie McKeehan. All rights reserved. 
 
 #include "CPictureClipboardTask.h"
 #include <CClipboard.h>
 
 extern CClipboard *gClipboard; 
-const LongPt kZeroZeroPt ={0, 0};
+const LongPt kZeroZeroPt = {0, 0};
 
-// cmdTyping is first string, cmdCut is next CPictureClipboardTask::CPictureClipboardTask(CPicture *thePicture,
-long command):
-CTask(command · cmdCut + 2)
+// cmdTyping is first string, cmdCut is next
+CPictureClipboardTask::CPictureClipboardTask(CPicture *thePicture, long command):CTask(command - cmdCut + 2)
 {
     fOldMacPicture = NULL;
     fOldScrap = NULL;
@@ -20,7 +19,8 @@ CTask(command · cmdCut + 2)
     TCL_END_CONSTRUCTOR
 }
 
-CPictureClipboardTask::-CPictureClipboardTask() {
+CPictureClipboardTask::~CPictureClipboardTask()
+{
     TCL_START_DESTRUCTOR 
     if (!IsUndone()) {
         switch (fCommand) { 
@@ -41,15 +41,16 @@ CPictureClipboardTask::-CPictureClipboardTask() {
                 break;
         } 
     } else
-        if (fOldScrap I= NULL) 
+        if (fOldScrap != NULL) 
             ::DisposHandle(fOldScrap);
 }
 
-void CPictureClipboardTask::Do() {
-    if (fCommand I = cmdClear) { 
+void CPictureClipboardTask::Do()
+{
+    if (fCommand != cmdClear) { 
         Handle h;
 
-        gClipboard·>GetData('PICT', &h);
+        gClipboard->GetData('PICT', &h);
         fOldScrap = h;
     }
     fOldMacPicture =fPicture->GetMacPicture();
@@ -58,12 +59,12 @@ void CPictureClipboardTask::Do() {
 
 void CPictureClipboardTask::Undo()
 {
-    if (fCommand == cmdCopy || fCommand cmdCut) { 
+    if (fCommand == cmdCopy || fCommand == cmdCut) { 
         gClipboard->EmptyScrap();
-        if (fOldScrap I= NULL)
+        if (fOldScrap != NULL)
             gClipboard->PutData('PICT', fOldScrap);
     } 
-    if (fCommand ! = cmdCopy) {
+    if (fCommand != cmdCopy) {
 
         fPicture->SetPosition((LongPt *) &kZeroZeroPt);
         fPicture->SetMacPicture(fOldMacPicture);
@@ -87,7 +88,7 @@ void CPictureClipboardTask::Redo()
         fPicture->SetMacPicture((PicHandle) fOldScrap);
 
     } 
-    if (fCommand ! = cmdCopy)
+    if (fCommand != cmdCopy)
         fPicture->Refresh();
     undone =FALSE;
 }

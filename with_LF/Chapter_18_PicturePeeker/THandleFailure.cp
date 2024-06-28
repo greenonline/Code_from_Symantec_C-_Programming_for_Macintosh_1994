@@ -15,7 +15,7 @@ THandleFailure::THandleFailure() {
     TCL_END_CONSTRUCTOR
 }
 
-THandleFailure::-THandleFailure() {
+THandleFailure::~THandleFailure() {
     TCL_START_DESTRUCTOR
 }
 

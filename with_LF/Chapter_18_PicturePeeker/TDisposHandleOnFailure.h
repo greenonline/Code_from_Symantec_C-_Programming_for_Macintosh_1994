@@ -1,16 +1,18 @@
 /* Chapter 18 - PicturePeeker */
 /* TDisposHandleOnFailure.h */
-
+/* was listed under DisposeHandleOnFailure.h on page 619 */
+/* This file is good and works */
 
 #pragma once
 
-#include "TFailureObjects.h"
+#include "THandleFailure.h"
 
 // disposes the handle passed in the constructor on failure 
-class TDisposHandleOnFailure: public TCatchFailure { 
+class TDisposHandleOnFailure: public THandleFailure { 
 public:
+    TCL_DECLARE_CLASS 
     TDisposHandleOnFailure(Handle h);
-protected:
-    virtual void HandleFailure(OSErr err, long message); 
+    ~TDisposHandleOnFailure();
 private:
     Handle fHandle;
+};

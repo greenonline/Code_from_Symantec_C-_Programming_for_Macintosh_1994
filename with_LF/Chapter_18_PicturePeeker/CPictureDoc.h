@@ -10,7 +10,7 @@ class CPictureDoc: public CDocument {
 public:
     virtual void NewFile();
     virtual void OpenFile(SFReply *macReply);
-    virtual Boolean DoSave{);
+    virtual Boolean DoSave();
     virtual Boolean DoSaveAs(SFReply *macSFReply);
 protected:
     virtual void BuildWindow();

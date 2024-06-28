@@ -16,9 +16,9 @@
 #include "THandleLocker.h"
 
 
-extern Cdesktop *gDesktop;
-extern OSType  gSignature;
-extern CDecorator  *gDecorator;
+extern CDesktop *gDesktop;
+extern OSType gSignature;
+extern CDecorator *gDecorator;
 const long kPICTHeaderLength = 512;
 
 void CPictureDoc::NewFile()
@@ -46,7 +46,7 @@ void CPictureDoc::BuildWindow() {
     const Boolean kFitHorizontal = TRUE;
     const Boolean kFitVertical = TRUE;
     const Boolean kHasHorizontalScrollbar = TRUE;
-    const Boolean kHasverticalScrollbar = TRUE;
+    const Boolean kHasVerticalScrollbar = TRUE;
     const Boolean kHasGrowBox = TRUE;
     const Boolean kRedraw = TRUE;
 
@@ -58,7 +58,7 @@ kHasHorizontalScrollbar, kHasVerticalScrollbar, kHasGrowBox);
     theScrollPane->FitToEnclFrame(kFitHorizontal, kFitVertical);
 
     CCutCopyPastePicture *thePane =
-new ccutCopyPastePicture(theScrollPane, this, 1, 1, 0, 0, sizELASTIC, sizELASTIC);
+new CCutCopyPastePicture(theScrollPane, this, 1, 1, 0, 0, sizELASTIC, sizELASTIC);
     itsGopher =thePane;
     itsMainPane =thePane;
     fPicture =thePane;
@@ -118,7 +118,7 @@ Boolean CPictureDoc::DoSave() {
         CDataFile *theDataFile = (CDataFile *) itsFile;
         Handle theMacPicture = (Handle) fPicture->GetMacPicture(); {
             TWithFileOpen fileOpener(theDataFile, fsWrPerm);
-            char zeros[kPICTHeaderLengthJ;
+            char zeros[kPICTHeaderLength];
 
             for (int i =0; i < kPICTHeaderLength; i++)
                zeros[i] =0;
@@ -129,10 +129,11 @@ Boolean CPictureDoc::DoSave() {
 
         dirty =FALSE;
         return(TRUE);
+    }
 }
 
 Boolean CPictureDoc::DoSaveAs(SFReply *macSFReply) {
-    if (itsFile I= NULL)
+    if (itsFile != NULL)
         delete itsFile;
     CDataFile *theDataFile = new CDataFile;
     itsFile =theDataFile;

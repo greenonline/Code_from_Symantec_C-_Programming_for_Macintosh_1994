@@ -11,7 +11,7 @@ class CPictureClipboardTask: public CTask {
 public:
     CPictureClipboardTask(CPicture *thePicture, long command);
 
-    virtual -CPictureClipboardTask(); 
+    virtual ~CPictureClipboardTask(); 
     virtual void Do();
     virtual void Undo();
     virtual void Redo();
@@ -22,3 +22,4 @@ private:
     long fCommand;
     Handle fOldScrap;
     PicHandle fOldMacPicture;
+};

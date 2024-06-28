@@ -13,7 +13,7 @@
 extern CBartender *gBartender; 
 extern CClipboard *gClipboard;
 
- CCutCopyPastePicture::CCutCopyPastePicture(CView *anEnclosure, CBureaucrat *aSupervisor,
+CCutCopyPastePicture::CCutCopyPastePicture(CView *anEnclosure, CBureaucrat *aSupervisor,
 short aWidth, short aHeight, short aHEncl, short aVEncl, SizingOption aHSizing, SizingOption aVSizing) : CPicture(anEnclosure, aSupervisor, aWidth, aHeight, aHEncl, aVEncl, aHSizing, aVSizing)
 {
  TCL_END_CONSTRUCTOR
@@ -23,7 +23,7 @@ void CCutCopyPastePicture::UpdateMenus() {
     CPicture::UpdateMenus();
 
 
-    if ( GetMacPicture() ! = NULL) {
+    if ( GetMacPicture() != NULL) {
         gBartender->EnableCmd(cmdCopy);
         gBartender->EnableCmd(cmdCut);
         gBartender->EnableCmd(cmdClear);

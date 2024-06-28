@@ -12,7 +12,7 @@ class TWithFileOpen TCL_AUTO_DESTRUCT_OBJECT {
 public:
     TCL_DECLARE_CLASS
     TWithFileOpen(CFile *theFile, SignedByte permission);
-    -TWithFileOpen();
+    ~TWithFileOpen();
 
 private:
     CFile *fFile;

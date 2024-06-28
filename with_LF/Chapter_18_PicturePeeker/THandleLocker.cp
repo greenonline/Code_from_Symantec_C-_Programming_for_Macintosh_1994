@@ -12,11 +12,11 @@
 TCL_DEFINE_CLASS_M0(THandleLocker);
 
 THandleLocker::THandleLocker(Handle h) {
-    fHandle =h;
+    fHandle = h;
     fState =::HGetState(fHandle);
     ::HLock(h);
 }
 
-THandleLocker::-THandleLocker() {
+THandleLocker::~THandleLocker() {
     ::HSetState(fHandle, fState);
 }

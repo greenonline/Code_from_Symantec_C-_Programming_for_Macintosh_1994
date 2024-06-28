@@ -16,6 +16,6 @@ TWithFileOpen::TWithFileOpen(CFile *theFile, SignedByte permission) {
     fFile =theFile;
 }
 
-TWithFileOpen::-TWithFileOpen() {
+TWithFileOpen::~TWithFileOpen() {
     if (fFile != NULL) fFile->Close();
 }

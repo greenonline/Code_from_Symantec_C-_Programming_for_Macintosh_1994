@@ -8,7 +8,7 @@
 *
 * CPictureApp.h
 *
-*   Application class for a typical application. *****/
+*   Application class for a typical application.
 *
 *****/
 
