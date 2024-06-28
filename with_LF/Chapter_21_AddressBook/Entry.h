@@ -10,7 +10,7 @@ class TNameAddressPhone {
 public:
     TNameAddressPhone(const char *name = NULL, const char *address =NULL, const char *fCity = NULL, const char *fState = NULL,
 const char *fZip =NULL, const char *fTelephone =NULL);
-    virtual -TNameAddressPhone()i
+    virtual ~TNameAddressPhone();
 
     const char *GetName() const;
     const char *GetAddress() const;

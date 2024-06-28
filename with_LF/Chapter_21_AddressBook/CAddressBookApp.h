@@ -19,21 +19,24 @@ If you change the name of the application, a fresh version of this file will be 
 class CAddressBookApp public x_CAddressBookApp {
 public:
     TCL_DECLARE_CLASS
-void ICAddressBookApp(void);
-virtual void ForceClassReferences(void);
-virtual void DoCommand(long theCommand);
+    void ICAddressBookApp(void);
+    virtual void ForceClassReferences(void);
+    virtual void DoCommand(long theCommand);
 
-// Remove this function if you do not have // multiple document types
+    // Remove this function if you do not have 
+    // multiple document types
 
-virtual OSType GetDocTypeFromDialog(CDialogDirector *dialog);
+    virtual OSType GetDocTypeFromDialog(CDialogDirector *dialog);
 
 };
+
 // File Types
 //
 // Change the #defines below to reflect the file types 
 // your application actually creates or opens
+
 #define kNumFileTypes 1
-#define kFileType1 'ADDR'
-#define kFileType2 'TEXT'
-#define kFileType3 'TEXT'
+#define kFileType1    'ADDR'
+#define kFileType2    'TEXT'
+#define kFileType3    'TEXT'
 #define kFileType4 'TEXT'

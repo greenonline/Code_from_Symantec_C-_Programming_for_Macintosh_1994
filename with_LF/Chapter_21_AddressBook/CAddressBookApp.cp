@@ -22,12 +22,23 @@ If you change the name of the application, a fresh version of this file will be 
 
 
 
- #include "CAddressBookApp.h" #include "CStreamableDatabase.h"
+#include "CAddressBookApp.h" 
+#include "CStreamableDatabase.h"
 #include <CDialog.h>
 #include <TCLForceReferences.h>
-TCL_DEFINE_CLASS_M1(CAddressBookApp, x_CAddressBookApp); I****C0NSTRUCTI0NIDESTRUCTI0N METH0DS****I
-/****************************************************************************** ICAddressBookApp
-Initialize an Application. ******************************************************************************/
+TCL_DEFINE_CLASS_M1(CAddressBookApp, x_CAddressBookApp); 
+
+/****   C O N S T R U C T I O N / D E S T R U C T I O N   M E T H O D S   ****/
+
+/****************************************************************************** 
+
+ICAddressBookApp
+
+
+                     Initialize an Application. 
+
+******************************************************************************/
+
 void CAddressBookApp::ICAddressBookApp() {
 
 // The values below are:

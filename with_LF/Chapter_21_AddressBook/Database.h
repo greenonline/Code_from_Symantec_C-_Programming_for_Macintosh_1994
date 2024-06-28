@@ -7,9 +7,9 @@
 class MCollectible { 
 public:
 
-    enum {kItem1EqualItem2 = 0, kItemm1LessThanItem2 =-1, kItem1GreaterThanItem2 =1};
+    enum {kItem1EqualItem2 = 0, kItem1LessThanItem2 =-1, kItem1GreaterThanItem2 =1};
     MCollectible () ;
-    virtual -MCollectible();
+    virtual ~MCollectible();
 
     virtual int Compare(const MCollectible &item2) const; 
 };
@@ -17,7 +17,7 @@ public:
 class TNode { 
 public:
     TNode(MCollectible *value, TNode *up = NULL);
-    -TNode();
+    ~TNode();
 
     void Insert(MCollectible *value);
 
@@ -33,25 +33,25 @@ private:
     TNode *fLeft;
     TNode *fRight;
     TNode *fUp;
-    friend class Titerator; 
+    friend class TIterator; 
 };
 
 class TDatabase { 
 public:
     TDatabase();
-    virtual -TDatabase();
+    virtual ~TDatabase();
 
     void Insert(MCollectible* dataElement);
     MCollectible *Find(const MCollectible& key) const;
 
 private:
     TNode *fRoot;
-    friend class Titerator; };
+    friend class TIterator;
 };
 
-class Titerator { 
+class TIterator { 
 public:
-    Titerator(const TDatabase &database);
+    TIterator(const TDatabase &database);
 
     void MoveForward();
     void MoveBackward();
@@ -68,4 +68,4 @@ protected:
 private:
     const TDatabase &fDatabase;
     const TNode *fCurrent;
-}
+};

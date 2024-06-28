@@ -21,11 +21,10 @@ void CStreamableDatabase::PutTo(CStream& stream) {
     long total = 0;
     TIterator iter(fDatabase);
 
-    for (iter.MoveToBeginning(); 
-liter.NoMore(); iter.MoveForward())
+    for (iter.MoveToBeginning(); !iter.NoMore(); iter.MoveForward())
         total++; 
     stream << total;
-    for (iter.MoveToBeginning(); liter.NoMore(); iter.MoveForward()) {
+    for (iter.MoveToBeginning(); !iter.NoMore(); iter.MoveForward()) {
 
         TEntry *curEntry = (TEntry *) iter.GetCurrent();
 
@@ -34,7 +33,7 @@ liter.NoMore(); iter.MoveForward())
         stream << curEntry->GetCity();
         stream << curEntry->GetState();
         stream << curEntry->GetZip();
-        stream << curEntry·>GetTelephone();
+        stream << curEntry->GetTelephone();
     }
 }
 
@@ -42,7 +41,7 @@ void CStreamableDatabase::GetFrom(CStream& stream)
 {
     long total;
 
-    stream » total;
+    stream >> total;
 
     for (long i = 0; i < total; i++) { 
         char name[256];
@@ -54,7 +53,7 @@ void CStreamableDatabase::GetFrom(CStream& stream)
 
         stream >> name;
         stream >> address;
-        stream  >> city;
+        stream >> city;
         stream >> state;
         stream >> zip;
         stream >> telephone;

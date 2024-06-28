@@ -9,16 +9,16 @@
 MCollectible::MCollectible() {
 }
 
-MCollectible::-MCollectible()
+MCollectible::~MCollectible()
 { }
 
 int MCollectible::Compare(const MCollectible &item2) const {
     if (this < &item2)
         return kItem1LessThanItem2;
     else if (this > &item2)
-        return kitem1GreaterThanitem2;
+        return kItem1GreaterThanItem2;
     else
-        return kltem1Equa1Item2;
+        return kItem1EqualItem2;
 }
 
 TDatabase::TDatabase()
@@ -26,7 +26,7 @@ TDatabase::TDatabase()
     fRoot =NULL;
 }
 
-TDatabase::-TDatabase()
+TDatabase::~TDatabase()
 {
     delete fRoot;
 }
@@ -53,7 +53,7 @@ TNode::TNode(MCollectible *value, TNode *up)
     fValue = value;
 }
 
-TNode: :-TNode() {
+TNode::~TNode() {
     delete fRight; 
     delete fLeft;
     delete fValue;
@@ -67,8 +67,8 @@ MCollectible *TNode::Find(const MCollectible&key) const
 {
     const TNode *node = this;
     while (node != NULL) {
-        int compareResult node->GetValue()->Compare(key);
-        if (compareResult == MCollectible::kiIem1EqualItem2) 
+        int compareResult = node->GetValue()->Compare(key);
+        if (compareResult == MCollectible::kItem1EqualItem2) 
             return node->GetValue();
         else if (compareResult <= MCollectible::kItem1LessThanItem2)
             node = node->fRight;
@@ -87,25 +87,25 @@ void TNode::Insert(MCollectible *value) {
         int compareResult = (*node)->GetValue()->Compare(*value);
 
         up = *node;       // points at the current node
-        if (compareResult == MCollectible::kiIem1EqualItem2)
+        if (compareResult == MCollectible::kItem1EqualItem2)
         {
             delete value; 
             return;
         }
         else if (compareResult <= MCollectible::kItem1LessThanItem2)
-            node &(*node)->fRight;   // advance to next node
+            node = &(*node)->fRight;   // advance to next node
         else
-            node &(*node)->fLeft;    // advance to next node
-    } while (*node !=NULL);
+            node = &(*node)->fLeft;    // advance to next node
+    } while (*node != NULL);
     *node= new TNode(value, up);
 }
 
-const TNode *TNode::LeftMost() canst
+const TNode *TNode::LeftMost() const
 {
 
-    const TNode *n =this;
-    while (n->fLeft I= NULL)
-        n =n->fLeft;
+    const TNode *n = this;
+    while (n->fLeft != NULL)
+        n = n->fLeft;
     return n;
 }
 
@@ -129,10 +129,11 @@ TNode *TIterator::GetRoot() {
 void TIterator::MoveForward() {
     if (fCurrent == NULL)
         MoveToBeginning();
-    // if we have a right-hand side, the next node is the left-most of our RHS) 
-    else if (fCurrent->fRight I= NULL)
+    // if we have a right-hand side, the next node is the left-most of our RHS
+    else if (fCurrent->fRight != NULL)
         fCurrent = fCurrent->fRight->LeftMost();
-    else if (fCurrent->fUp ==NULL) // if we don't have a RHS, and don't have an up, we're done
+    else if (fCurrent->fUp == NULL) 
+    // if we don't have a RHS, and don't have an up, we're done
         fCurrent = NULL;
     else {
         // the next is our first ancestor who we are on the left-hand-side of• 
@@ -140,9 +141,6 @@ void TIterator::MoveForward() {
         do {
             last = fCurrent; 
             fCurrent = last->fUp;
-
-
-
         } while (fCurrent != NULL && fCurrent->fRight == last);
     }
 }
@@ -155,7 +153,7 @@ void TIterator::MoveBackward() {
     // if we have a left-hand side, the next node is the right-most of our LHS 
     else if (fCurrent->fLeft != NULL)
         fCurrent = fCurrent->fLeft->RightMost();
-    else if (fCurrent->fUp ==NULL) 
+    else if (fCurrent->fUp == NULL) 
     // if we don't have a LHS, and don't have an up, we're done
         fCurrent = NULL; 
     else {
@@ -169,7 +167,7 @@ void TIterator::MoveBackward() {
 }
 
 
-int TIterator: :NoMore() {
+int TIterator::NoMore() {
     return fCurrent == NULL;
 }
 

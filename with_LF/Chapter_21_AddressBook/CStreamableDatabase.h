@@ -18,8 +18,8 @@ public:
     virtual void PutTo(CStream& stream); 
     virtual void GetFrom(CStream& stream);
 
-    Tdatabase &GetDatabase(); 
+    TDatabase &GetDatabase(); 
 
 private:
-    Tdtabase fDatabase;
+    TDatabase fDatabase;
 };

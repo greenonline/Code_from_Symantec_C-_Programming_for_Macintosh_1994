@@ -17,18 +17,18 @@ static char *CopyOfString(const char *s)
     return copy;
 }
 
-TNameAddressPhone::TNameAddressPhone(const char *name, canst char *address, canst char *city, canst char *state, canst char *zip, canst char *telephone)
+TNameAddressPhone::TNameAddressPhone(const char *name, const char *address, const char *city, const char *state, const char *zip, const char *telephone)
 {
-
     fName = fAddress = fCity = fState = fZip = fTelephone = NULL;
     fName = CopyOfString(name);
-    fAddress = CopyOfString(address); fCity = CopyOfString(city);
+    fAddress = CopyOfString(address);
+    fCity = CopyOfString(city);
     fState = CopyOfString(state);
     fZip = CopyOfString(zip);
-    fTelephone =CopyOfString(telephone);
+    fTelephone = CopyOfString(telephone);
 }
 
-TNameAddressPhone::-TNameAddressPhone()
+TNameAddressPhone::~TNameAddressPhone()
 {
     delete[] fName; 
     delete [] fAddress; 
