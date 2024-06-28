@@ -62,16 +62,16 @@ resource 'STR#' (1025, "button names", purgeable, preload) {
         "7",
         "8",
         "9",
-    } /*TYPO???*/
+    }
 };
 
-resource 'WIND' (500, "C++ Cale", purgeable, preload) { 
+resource 'WIND' (500, "C++ Calc", purgeable, preload) { 
     {68, 44, 216, 150},
     rDocProc,
     invisible,
     goAway, 
     0x0,
-    "C++ Cale" 
+    "C++ Calc" 
 };
 
 resource 'BNDL' (128) { 
@@ -159,7 +159,6 @@ resource 'MENU' (2, "File", preload) {
     {
         "Close#4" ,noIcon,"W", noMark, plain,
         "Quit#1 ", noIcon, "Q", noMark, plain
-
     } 
 };
 
@@ -177,7 +176,9 @@ resource 'WIND' (200, "Clipboard", purgeable, preload) {
 
 resource 'MENU' (3, "Edit", preload) { 
     3,
-    textMenuProc, 0x7FFFFF80, enabled,
+    textMenuProc, 
+    0x7FFFFF80, 
+    enabled,
     "Edit",
     {
         "Undo#16", noIcon, "Z", noMark, plain,
@@ -201,9 +202,7 @@ resource 'MENU' (1, "Apple", preload) {
     {
         "About C++ Calc_#256", noIcon, noKey, noMark, plain, 
         "-", noIcon, noKey, noMark, plain
-
     }
-
 };
 
 
