@@ -8,5 +8,5 @@
 class CQuitOnCloseWindow: public CWindow { 
 public:
     CQuitOnCloseWindow(short WINDid, Boolean aFloating, CDirector *aSupervisor);
-    virtual -CQuitOnCloseWindow(); 
+    virtual ~CQuitOnCloseWindow(); 
 };

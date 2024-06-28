@@ -22,15 +22,11 @@ void CCalculatorPane::CreateCommandButton(short rowNumber, short colNumber, long
     const short kButtonHeight =16;
     const short kColumnWidth = 23;
     const short kColumnHeight =22;
-
-
-
-
     const short kLeftMargin = 9;
     const short kTopMargin = 29;
     const short kButtonTitleStringID = 1025;
 
-    GetindString(buttonName, kButtonTitleStringID, command - cmdFirstCommand + 1 ) ;
+    GetIndString(buttonName, kButtonTitleStringID, command - cmdFirstCommand + 1 ) ;
     aButton= new CButtonWithFontAndSize(kButtonWidth, kButtonHeight,     kLeftMargin + (colNumber-1)* kColumnHeight,
 kTopMargin + (rowNumber-1) * kColumnHeight,
 buttonName, TRUE, 0, this, this, "\pGeneva", 9);
@@ -44,10 +40,10 @@ SizingOption aHSizing, SizingOption aVSizing) :
 CPane(anEnclosure, aSupervisor, aWidth, aHeight,
 aHEncl, aVEncl, aHSizing, aVSizing)
 {
-    canst short kFloatTextWidth= 86;
-    canst short kFloatTextHeight = 20; 
-    canst short kFloatTextLeftMargin = 10;
-    canst short kFloatTextTopMargin = 9;
+    const short kFloatTextWidth= 86;
+    const short kFloatTextHeight = 20; 
+    const short kFloatTextLeftMargin = 10;
+    const short kFloatTextTopMargin = 9;
 
     wantsClicks = true;
     fCalcDisplay = new CFloatText(this, aSupervisor, kFloatTextWidth, kFloatTextHeight, kFloatTextLeftMargin, kFloatTextTopMargin, sizFIXEDSTICKY , sizFIXEDSTICKY , - 1 ) ;
@@ -102,19 +98,18 @@ void CCalculatorPane::UpdateMenus() {
 
  void CCalculatorPane::Draw(Rect *r)
 {
-    } 
-}
-if (lgSystem.hasColorQD)
-    ::FillRect(r, &qd.ltGray);
-else {
-    RGBColor aColor;
-    PixPatHandle myPixPat;
+    if (!gSystem.hasColorQD)
+        ::FillRect(r, &qd.ltGray);
+    else {
+        RGBColor aColor;
+        PixPatHandle myPixPat;
 
-    aColor.red = aColor.green =aColor.blue = 0xaaaa; // light gray
-    myPixPat =::NewPixPat();
-    ::MakeRGBPat(myPixPat, &aColor);
-    ::FillCRect(r,myPixPat);
-    ::DisposPixPat(myPixPat);
+        aColor.red = aColor.green =aColor.blue = 0xaaaa; // light gray
+        myPixPat =::NewPixPat();
+        ::MakeRGBPat(myPixPat, &aColor);
+        ::FillCRect(r,myPixPat);
+        ::DisposPixPat(myPixPat);
+    }
 }
 
 void CCalculatorPane::DoCommand(long theCommand) {
@@ -127,7 +122,7 @@ void CCalculatorPane::DoCommand(long theCommand) {
             Handle h; 
             Str255 s;
 
-            gClipboard->GetData('TEXT'' &h);
+            gClipboard->GetData('TEXT', &h);
             if (GetHandleSize(h) > sizeof(fCurrentNumber)-1)
                 SetHandleSize(h, sizeof(fCurrentNumber)-1);
             fCalcDisplay->SetTextHandle(h);
@@ -156,7 +151,7 @@ void CCalculatorPane::DoCommand(long theCommand) {
             UpdateDisplay();
             break;
          case cmdMultiply:
-            this->EntercurrentNumber();
+            this->EnterCurrentNumber();
             fCalculator.Multiply();
             UpdateDisplay();
             break;
@@ -171,7 +166,7 @@ void CCalculatorPane::DoCommand(long theCommand) {
             UpdateDisplay();
             break;
          case cmdChangeSign:
-            Str255 minusSign "\p-" ;
+            Str255 minusSign = "\p-" ;
             Str255 current;
             fCalcDisplay->GetTextString(current);
             if (Length(current) > 0 && current[1] == '-') {
@@ -206,23 +201,18 @@ void CCalculatorPane::DoCommand(long theCommand) {
              }
              break;
          case cmdPeriod:
-             Str31 periodString = n \p. II j
-             if (Length(fCurrentNumber) + Length(periodString) <
-sizeof(fCurrentNumber)) {
+             Str31 periodString = "\p.";
+             if (Length(fCurrentNumber) + Length(periodString) < sizeof(fCurrentNumber)) {
                  ConcatPStrings(fCurrentNumber, periodString);
                  fCalcDisplay->SetTextString(fCurrentNumber);
              }
              break;
          case cmdE:
-             Str31 eString = 11 \pE";
-             if (Length(fCurrentNumber) + Length(eString) <
-sizeof(fCurrentNumber)) {
-
+             Str31 eString = "\pE";
+             if (Length(fCurrentNumber) + Length(eString) < sizeof(fCurrentNumber)) {
                  ConcatPStrings(fCurrentNumber, eString);
                  fCalcDisplay->SetTextString(fCurrentNumber);
-
               }
-
               break; 
           default:
               CPane::DoCommand(theCommand);
@@ -230,19 +220,18 @@ sizeof(fCurrentNumber)) {
 }
 
 void CCalculatorPane::EnterCurrentNumber() {
-}
     if(Length(fCurrentNumber) > 0) { 
         fCalculator.Enter(fCalcDisplay->GetValue()); 
         Length(fCurrentNumber) = 0;
         UpdateDisplay();
+    }
 }
 
 void CCalculatorPane::DoKeyDown(char theChar, Byte keyCode, EventRecord *macEvent)
 {
-}
-    const kReturnChar =13;
-    const kEnterChar =3;
-    const kBackspaceChar =8;
+    const kReturnChar = 13;
+    const kEnterChar = 3;
+    const kBackspaceChar = 8;
     long commandNumber;
     switch (theChar){
         case kBackspaceChar:
@@ -279,8 +268,8 @@ void CCalculatorPane::DoKeyDown(char theChar, Byte keyCode, EventRecord *macEven
         case '+':
             commandNumber = cmdAdd;
             break;
-        case '·':
-        case '-':
+        case '`':
+        case '~':
             commandNumber = cmdChangeSign;
             break;
          case '-':
@@ -294,11 +283,11 @@ void CCalculatorPane::DoKeyDown(char theChar, Byte keyCode, EventRecord *macEven
             break;
          case kReturnChar: 
          case kEnterChar:
-            commandNumber =         cmdEnter;
+            commandNumber = cmdEnter;
             break;
         default:
             inherited::DoKeyDown(theChar, keyCode, macEvent);
             return;
     }
-    fButtons[commandNumber - cmdFirstCommandJ->SimulateClick();
+    fButtons[commandNumber - cmdFirstCommand]->SimulateClick();
 }

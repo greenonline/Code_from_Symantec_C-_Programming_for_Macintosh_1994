@@ -2,9 +2,9 @@
 /* CFloatText.cp */
 
 
-// Copyright© 1993, Neil Rhodes and Julie McKeehan. All rights reserved.
+// Copyright © 1993, Neil Rhodes and Julie McKeehan. All rights reserved.
 
-#include 'CFloatText.h' 
+#include "CFloatText.h"
 #include <SANE.h> 
 #include <Packages.h> 
 #include <stdio.h>
@@ -26,13 +26,9 @@ aHSizing, aVSizing, aLineWidth)
     SetMaxDisplayWidth(8);
     TCL_END_CONSTRUCTOR;
 }
-   
 
- 
-
-
-void CFloatText::SetMaxDisplayWidth(short numChars) {
-}
+void CFloatText::SetMaxDisplayWidth(short numChars) 
+{
     fMaxDisplayChars =numChars;
 }
 
@@ -54,7 +50,7 @@ void CFloatText::SetValue(long double value) {
 
     ValueToText(value, newString);
     GetTextString(existingString);
-    if (l::EqualString(newString, existingString, TRUE, TRUE))
+    if (!::EqualString(newString, existingString, TRUE, TRUE))
         SetTextString(newString);
 }
 

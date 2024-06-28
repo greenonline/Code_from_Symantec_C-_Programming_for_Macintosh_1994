@@ -27,7 +27,7 @@ protected:
     cmdAdd = cmdFirstCommand, cmdMultiply, cmdDivide, cmdSubtract, cmdEnter,
     cmdPeriod, cmdE, cmdClearEntry, cmdChangeSign, 
     cmd0, cmd1, cmd2, cmd3,
-    cmd4, cmd5, cmd6, cmd7, cmdB, cmd9, cmdLastCommand = cmd9 };
+    cmd4, cmd5, cmd6, cmd7, cmd8, cmd9, cmdLastCommand = cmd9 };
 
     virtual void UpdateDisplay();
     virtual void EnterCurrentNumber();

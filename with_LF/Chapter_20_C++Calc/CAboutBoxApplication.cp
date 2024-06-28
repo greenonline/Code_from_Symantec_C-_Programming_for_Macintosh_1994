@@ -1,7 +1,9 @@
 /* Chapter 20 - C++Calc */
 /* CAboutBoxApplication.cp */
 
-// Copyright© 1993, Neil Rhodes and Julie McKeehan. All rights reserved. #include "CAboutBoxApplication.h"
+// Copyright © 1993, Neil Rhodes and Julie McKeehan. All rights reserved. 
+
+#include "CAboutBoxApplication.h"
 #include <SegLoad.h>
 
 CAboutBoxApplication::CAboutBoxApplication(short extraMasters, Size aRainyDayFund, Size aCriticalBalance, Size aToolboxBalance) : CApplication(extraMasters, aRainyDayFund, aCriticalBalance, aToolboxBalance) 

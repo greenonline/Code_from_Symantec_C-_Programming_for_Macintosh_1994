@@ -21,7 +21,7 @@ const Size kCriticalBalance = 20480;
 const Size kToolboxBalance = 20480;
 const short kWINDStarter = 500;
 
-CCalculatorApp::CCalculatorApp() CAboutBoxApplication(kExtraMasters, kRainyDayFund, kCriticalBalance, kToolboxBalance) 
+CCalculatorApp::CCalculatorApp() : CAboutBoxApplication(kExtraMasters, kRainyDayFund, kCriticalBalance, kToolboxBalance) 
 {
     TCL_END_CONSTRUCTOR;
 }

@@ -11,9 +11,9 @@
 resource 'MBAR' (1, preload) {
     { 1, 2, 3
     }
-}j
+};
 
-resource 'ALRT' (1024, •kAlertResourceID") {
+resource 'ALRT' (1024, "kAlertResourceID") {
     {40, 40, 184, 276},
     1024,
     {    /* array: 4 elements */
@@ -23,7 +23,6 @@ resource 'ALRT' (1024, •kAlertResourceID") {
         OK, visible, sound1
     } 
 };
-} }
 
 resource 'DITL' (1024, "kAlertResourceID") {
     {
@@ -34,7 +33,7 @@ resource 'DITL' (1024, "kAlertResourceID") {
             "y Neil Rhodes and Julie McKeehan, Brady "
             "Books"
         },
-        {116' 147' 136' 205},
+        {116, 147, 136, 205},
         Button {
             enabled,
             "OK"
@@ -43,26 +42,26 @@ resource 'DITL' (1024, "kAlertResourceID") {
 };
 
 resource 'STR#' (1025, "button names", purgeable, preload) {
-
-"+",
-"*",
-"/",
-"-",
-"Ent",
-".",
-"E",
-"CE",
-"±",
-"0",
-"1",
-"2",
-"3",
-"4",
-"5",
-"6",
-"7",
-"8",
-"9",
+    {
+        "+",
+        "*",
+        "/",
+        "-",
+        "Ent",
+        ".",
+        "E",
+        "CE",
+        "±",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
     } /*TYPO???*/
 };
 
@@ -165,7 +164,7 @@ resource 'MENU' (2, "File", preload) {
 };
 
 
-resource 'WIND' (200, 'Clipboard", purgeable, preload) { 
+resource 'WIND' (200, "Clipboard", purgeable, preload) { 
     {130, 158, 238, 444},
     zoomDocProc,
     invisible,
@@ -183,17 +182,17 @@ resource 'MENU' (3, "Edit", preload) {
     {
         "Undo#16", noIcon, "Z", noMark, plain,
         "-", noIcon, noKey, noMark, plain,
-        "Cut#18", noIcon, 'X', noMark, plain,
+        "Cut#18", noIcon, "X", noMark, plain,
         "Copy#19", noIcon, "C", noMark, plain,
-        "Paste#20', noIcon, 'V', noMark, plain, 
-        "Clear#21', noIcon, noKey, noMark, plain,
-        "Select All#23", noIcon, "A', noMark, plain,
+        "Paste#20", noIcon, "V", noMark, plain, 
+        "Clear#21", noIcon, noKey, noMark, plain,
+        "Select All#23", noIcon, "A", noMark, plain,
         "-", noIcon, noKey, noMark, plain,
-        'Show Clipboard#22', noIcon, noKey, noMark, plain
+        "Show Clipboard#22", noIcon, noKey, noMark, plain
     } 
 };
 
-resource 'MENU' (1, "Apple' , preload) {
+resource 'MENU' (1, "Apple", preload) {
     1,
     textMenuProc,
     0x7FFFFFFD,
@@ -209,7 +208,7 @@ resource 'MENU' (1, "Apple' , preload) {
 
 
 
-resource 'CNTL' (300, "Scroll Bar', preload) { 
+resource 'CNTL' (300, "Scroll Bar", preload) { 
     {0, 0, 0, 0},
     0,
     visible,

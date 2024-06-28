@@ -23,18 +23,18 @@ void TCalculator::Add() {
 
 void TCalculator::Subtract()
 {
-    long double v =PopX{);
-    Enter{PopX{) - v ) ;
+    long double v =PopX();
+    Enter(PopX() - v);
 }
 
 void TCalculator::Multiply() {
     long double v = PopX();
-    Enter{PopX() * v ) ; 
+    Enter(PopX() * v); 
 }
 
 void TCalculator::Divide() {
     long double v = PopX();
-    Enter(PopX() I v ) ;
+    Enter(PopX() / v);
 }
 
 long double TCalculator::GetX() {
@@ -45,7 +45,7 @@ long double TCalculator::GetY() {
     return fY;
 }
 
-long double TCalculator::GetZ{) {
+long double TCalculator::GetZ() {
     return fZ;
 }
 
@@ -57,7 +57,7 @@ void TCalculator::SetY(long double num) {
     fY = num;
 }
 
-void TCalculator::SetZ{long double num) {
+void TCalculator::SetZ(long double num) {
     fZ = num;
 }
 
