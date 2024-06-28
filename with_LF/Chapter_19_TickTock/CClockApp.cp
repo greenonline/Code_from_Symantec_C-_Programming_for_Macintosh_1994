@@ -11,7 +11,7 @@
 * *****/
 
 #include "CClockApp.h"
-#include "CClockPane.h'
+#include "CClockPane.h"
 #include <CDecorator.h>
 #include <CDirector.h>
 #include <CScrollPane.h>
@@ -37,13 +37,13 @@ void CClockApp::StartUpAction(short numPreloads) {
 
     const Boolean kFloatingWindow = TRUE;
     const short kMinWindowHeight = 30;
-    const short kMinWindowWidth 30;
+    const short kMinWindowWidth = 30;
   
 
     CDirector *aDirector =new CDirector(this);
 
     CSaveRestoreSizeWindow *aWindow =
-new CSaveRestoreSizeWindow(kWINDStarter, lkFloatingWindow, aDirector);
+new CSaveRestoreSizeWindow(kWINDStarter, !kFloatingWindow, aDirector);
     aDirector->itsWindow = aWindow; 
     Rect sizeRect = aWindow->sizeRect; 
     sizeRect.top = kMinWindowHeight; 

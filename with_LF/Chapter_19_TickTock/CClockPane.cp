@@ -17,14 +17,14 @@
    
 
  
-extern Capplication *gApplication; 
-extern Cbartender *gBartender;
+extern CApplication *gApplication; 
+extern CBartender *gBartender;
 extern long gSleepTime;
 
 CClockPane::CClockPane(CView *anEnclosure, CBureaucrat *aSupervisor, short aWidth, short aHeight,
 short aHEncl, short aVEncl,
 SizingOption aHSizing, SizingOption aVSizing) : CPane(anEnclosure, aSupervisor, aWidth, aHeight,
-aHEncl, aVEncl, aHSizing, aVSizing
+aHEncl, aVEncl, aHSizing, aVSizing)
 {
 
     fIdleChore = NULL;
@@ -33,23 +33,23 @@ aHEncl, aVEncl, aHSizing, aVSizing
     fGrafPtr = NULL;
     SetRect(&fBitMap.bounds, 0, 0, 0, 0);
 
-    fIdleChore =new CDawdleBureaucratChore(this);
+    fIdleChore = new CDawdleBureaucratChore(this);
     fGrafPtr = (GrafPtr) ::NewPtrCanFail(sizeof(GrafPort));
 
     ::FailNIL(fGrafPtr); 
     ::OpenPort(fGrafPtr);
 
-    fDigital =false; 
+    fDigital = false; 
     fShowSeconds = true;
 }
 
-CClockPane::-CClockPane() {
-    if (fIdleChoreIsnstalled)
+CClockPane::~CClockPane() {
+    if (fIdleChoreIsInstalled)
         gApplication->CancelIdleChore(fIdleChore);
     TCLForgetObject(fIdleChore); 
     if (fBitMap.baseAddr != NULL)
         ::DisposPtr(fBitMap.baseAddr); 
-    if (fGrafPtr I= NULL) {
+    if (fGrafPtr != NULL) {
         ::ClosePort(fGrafPtr); 
         ::DisposPtr((Ptr) fGrafPtr);
     }
@@ -59,7 +59,7 @@ void CClockPane::Activate(void)
 {
     CPane::Activate();
     if (fIdleChoreIsInstalled) {
-        gApplication->CancelidleChore(fIdleChore);
+        gApplication->CancelIdleChore(fIdleChore);
         fIdleChoreIsInstalled =false; 
     }
 }
@@ -116,6 +116,7 @@ inline short Round(float f)
 }
 
 void CClockPane::UpdateOffscreen(const Rect &area) 
+{
     LongRect frame; 
     Rect qdFrame;
 
@@ -182,26 +183,23 @@ void CClockPane::GetDigitalFontAndSize(const Str255 s, const Rect &clockSize, sh
     *font = geneva;
     *size = 9;
 }
+
 void CClockPane::GetDigitalStringLocation(const Str255 s, const Rect &clockSize, short *h, short *v)
 {
-    Fontinfo fInfo;
+    FontInfo fInfo;
 
-    ::GetFontinfo(&fInfo);
+    ::GetFontInfo(&fInfo);
     short excessHeight =clockSize.bottom - clockSize.top - fInfo.descent - fInfo.ascent; 
     if (excessHeight < 0)
         *v =clockSize.bottom; 
     else
         *v = clockSize.bottom - fInfo.descent - excessHeight / 2;
 
-    short excessWidth =clockSize.right - clockSize.left - ::StringWidth(s); i 
+    short excessWidth = clockSize.right - clockSize.left - ::StringWidth(s);
     if (excessWidth < 0)
         *h = clockSize.left;
-
-
-
-
     else
-        *h clockSize.left + excessWidth / 2;
+        *h = clockSize.left + excessWidth / 2;
 }
 
 void CClockPane::DrawDigitalClock(const Rect &clockSize, unsigned long now) {
@@ -225,14 +223,14 @@ void CClockPane::DrawAnalogClock(const Rect &clockSize, unsigned long now) {
     DateTimeRec nowDateTime;
     const short kSecondHandThickness = 1;
     const short kMinuteHandThickness = 2;
-    const short kHourHandThickness 3;
+    const short kHourHandThickness = 3;
   
     ::Secs2Date(now, &nowDateTime);
 
     if (fShowSeconds)
         DrawLine(clockSize, ((float) nowDateTime.second) / 60.0,
 kSecondHandThickness);
-    DrawLine(clockSize, nowDateTime.minute I 60.0, kMinuteHandThickness);
+    DrawLine(clockSize, nowDateTime.minute / 60.0, kMinuteHandThickness);
 
     Rect smallFrame = clockSize;        // hour hand will be inscribed here
     const kHourHandSmallerConstant =2;  // half as big as other hands
@@ -240,7 +238,7 @@ kSecondHandThickness);
       (clockSize.right - clockSize.left)/(2 * kHourHandSmallerConstant), 
       (clockSize.bottom - clockSize.top)/(2 * kHourHandSmallerConstant));
 
-    DrawLine(smallFrame, nowDateTime.hour I 12.0, kHourHandThickness);
+    DrawLine(smallFrame, nowDateTime.hour / 12.0, kHourHandThickness);
 }
 
 

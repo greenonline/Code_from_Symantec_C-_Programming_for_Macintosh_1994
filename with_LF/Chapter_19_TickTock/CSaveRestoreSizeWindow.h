@@ -11,7 +11,7 @@ class CSaveRestoreSizeWindow: public CQuitOnCloseWindow {
 public:
     CSaveRestoreSizeWindow( short windID,
     Boolean aFloating, CDirector *aSupervisor);
-    virtual -cSaveRestoreSizeWindow();
+    virtual ~CSaveRestoreSizeWindow();
 
 protected:
     virtual void StoreInfoInFile(CDataFile *aFile);

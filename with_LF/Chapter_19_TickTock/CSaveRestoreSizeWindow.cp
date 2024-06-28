@@ -10,19 +10,19 @@
 
 CSaveRestoreSizeWindow::CSaveRestoreSizeWindow(short windID,
 Boolean aFloating,
-Cdirector *aSupervisor) :
+CDirector *aSupervisor) :
 CQuitOnCloseWindow(windID, aFloating, aSupervisor)
 {
     fDataFile= NULL;
 
     fDataFile = new CDataFile;
     SpecifyFile(fDataFile); 
-    SetinfoFromFile(fDataFile); 
+    SetInfoFromFile(fDataFile); 
     TCL_END_CONSTRUCTOR;
 
 }
 
-CSaveRestoreSizeWindow::-CSaveRestoreSizeWindow() {
+CSaveRestoreSizeWindow::~CSaveRestoreSizeWindow() {
     TCL_START_DESTRUCTOR; 
     StoreInfoInFile(fDataFile); 
     TCLForgetObject(fDataFile);
@@ -40,7 +40,8 @@ void CSaveRestoreSizeWindow::StoreInfoInFile(CDataFile *aFile) {
 
 
 
-    if (laFile->ExistsOnDisk()) aFile->CreateNew('C++5', 'PREF');
+    if (!aFile->ExistsOnDisk()) 
+        aFile->CreateNew('C++5', 'PREF');
 
     aFile->Open(fsWrPerm);
 
@@ -49,7 +50,7 @@ void CSaveRestoreSizeWindow::StoreInfoInFile(CDataFile *aFile) {
     TGrafPortSetter setPort(macPort);
     ::LocalToGlobal((Point *) &theWindowLocSize.top); 
     ::LocalToGlobal((Point *) &theWindowLocSize.bottom);
-}. /* TYPO???*/
+//} /* TYPO???*/
     TRY {
         aFile->WriteSome((Ptr) &theWindowLocSize, sizeof(theWindowLocSize));
     }

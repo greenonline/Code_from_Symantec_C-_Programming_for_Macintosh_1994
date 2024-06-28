@@ -28,24 +28,24 @@ SizingOption aHSizing, SizingOption aVSizing);
     virtual void DoCommand(long theCommand);
 
 protected:
-    enum {cmdShowSeconds 1024, cmdDigital=1025, cmdAnalog=1026);
+    enum {cmdShowSeconds=1024, cmdDigital=1025, cmdAnalog=1026};
     virtual void DrawClock(const Rect &clockSize);
     virtual void CopyFromOffscreen(const Rect &areaToCopy);
     virtual void CreateOffscreen(const Rect &area);
     virtual void UpdateOffscreen(const Rect &area);
     virtual long CalculateSleepTime();
-    virtual void DrawAnalogClock(const Rect &clockSize, unsigned long now}; 
-    virtual void DrawDigitalClock(const Rect &clockSize, unsigned long now}; 
-    virtual void GetDigitalString(unsigned long now, Str255 s}; 
-    virtual void GetDigitalFontAndSize(const Str255 s, const Rect &clockSize, short *font, short *size};
+    virtual void DrawAnalogClock(const Rect &clockSize, unsigned long now); 
+    virtual void DrawDigitalClock(const Rect &clockSize, unsigned long now); 
+    virtual void GetDigitalString(unsigned long now, Str255 s); 
+    virtual void GetDigitalFontAndSize(const Str255 s, const Rect &clockSize, short *font, short *size);
     virtual void GetDigitalStringLocation(const Str255 s, const Rect &clockSize, short *h, short *v); 
 
 private:
-    CDawdleBureaucratChore *fidleChore;
+    CDawdleBureaucratChore *fIdleChore;
     Boolean fIdleChoreIsInstalled;
     BitMap  fBitMap;
     GrafPtr fGrafPtr;
-    Boolean fShowseconds;
+    Boolean fShowSeconds;
     Boolean fDigital;
 };
 

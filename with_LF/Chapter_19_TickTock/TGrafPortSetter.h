@@ -10,7 +10,7 @@
 class TGrafPortSetter TCL_AUTO_DESTRUCT_OBJECT { 
 public:
     TGrafPortSetter(GrafPtr newGrafPtr); 
-    virtual -TGrafPortSetter();
+    virtual ~TGrafPortSetter();
 private:
     GrafPtr fOldGrafPtr;
 };
@@ -22,7 +22,7 @@ inline TGrafPortSetter::TGrafPortSetter(GrafPtr newGrafPtr)
     ::SetPort(newGrafPtr);
     TCL_END_CONSTRUCTOR;
 }
-inline TGrafPortSetter::-TGrafPortSetter()
+inline TGrafPortSetter::~TGrafPortSetter()
 {
     TCL_START_DESTRUCTOR; 
     ::SetPort(fOldGrafPtr);

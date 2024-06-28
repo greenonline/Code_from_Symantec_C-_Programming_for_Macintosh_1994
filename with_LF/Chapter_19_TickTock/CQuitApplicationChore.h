@@ -9,4 +9,4 @@
 class CQuitApplicationChore: public CChore { 
 public:
     virtual void Perform(long *maxSleep);
-}
+};
