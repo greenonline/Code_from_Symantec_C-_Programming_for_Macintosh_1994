@@ -5,7 +5,7 @@
 #define kWordsResourceID 1024 
 #define kCharsResourceID 1025
 #define kMiscStringsID   1026
-#define kPromptitem       1
-#define kBadCharacteritem 2
-#define kTemplateitem     3
+#define kPromptItem       1
+#define kBadCharacterItem 2
+#define kTemplateItem     3
 

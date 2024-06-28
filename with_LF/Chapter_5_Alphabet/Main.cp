@@ -11,13 +11,13 @@
 #define kMaxInputLine 512
 
 /* prompt for character input */ 
-char gPrompt[256J;
+char gPrompt[256];
 
 /* if they type an invalid character */ 
-char gBadCharacter[256J;
+char gBadCharacter[256];
 
 /* output if they type a valid character. This is used as the first argument to printf */
-char gCharisForWordTemplate[256J;
+char gCharIsForWordTemplate[256];
 
 Boolean FindIndexOfCharacter(char c, int *ip) {
     const kCaseSensitive = true;
@@ -31,22 +31,20 @@ Boolean FindIndexOfCharacter(char c, int *ip) {
 
 
     do {
-        GetindString(entry, kCharsResourceID, ++index);
-    } while (StrLength(entry) I= 0 && 
+        GetIndString(entry, kCharsResourceID, ++index);
+    } while (StrLength(entry) != 0 && 
          !EqualString(charAsString, entry,
            !kCaseSensitive, !kDiacriticalSensitive));
     *ip = index;
     return StrLength(entry) != 0;
-
 }
-
 
 
 /* returns false if no more input */ 
 Boolean HandleOneInteraction()
 {
     int c;
-    char inputLine[kMaxInputLineJ;
+    char inputLine[kMaxInputLine];
 
     printf("\n%s", gPrompt);
     if (fgets(inputLine, sizeof(inputLine), stdin) == NULL)
@@ -58,9 +56,9 @@ Boolean HandleOneInteraction()
         else {
             Str255 word;
 
-            GetIndString(word, kWordsResourceID, i ) ; 
-            printf(gCharIsForwordTemplate, *inputLine, p2cstr(word)); 
-            putchar ( '\n' ) ;
+            GetIndString(word, kWordsResourceID, i); 
+            printf(gCharIsForWordTemplate, *inputLine, p2cstr(word)); 
+            putchar('\n');
         }
         return true;
     }
@@ -76,8 +74,8 @@ void InitializeStrings()
     GetIndString(s, kMiscStringsID, kBadCharacterItem); 
     strcpy(gBadCharacter, p2cstr(s));
 
-    GetIndString(s, kMiscStringsID, kTemplateitem);
-    strcpy(gCharisForWordTemplate, p2cstr(s));
+    GetIndString(s, kMiscStringsID, kTemplateItem);
+    strcpy(gCharIsForWordTemplate, p2cstr(s));
 }
 
 main()
