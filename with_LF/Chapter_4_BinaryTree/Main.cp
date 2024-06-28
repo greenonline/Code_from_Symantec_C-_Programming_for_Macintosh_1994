@@ -4,16 +4,18 @@
 struct BinaryTree { 
     int value;
 
-    BinaryTree *left; BinaryTree *right;
+    BinaryTree *left; 
+    BinaryTree *right;
+
     BinaryTree(int v) {value v; left = right = NULL;}
-}j
+};
 
 Boolean CheckBinaryTree(BinaryTree *aTree)
 {
     if (aTree == NULL) 
         return true;
 
-    if (aTree->left I= NULL) {
+    if (aTree->left != NULL) {
         if (aTree->left->value > aTree->value)
             return false;
         if (!CheckBinaryTree(aTree->left))
@@ -45,7 +47,7 @@ main() {
     node= NewNode(4); 
     root->left->left = node;
 
-    node= NewNode(B); 
+    node= NewNode(8); 
     root->right = node;
 
     return 0;
