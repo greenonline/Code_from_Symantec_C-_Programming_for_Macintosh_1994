@@ -16,4 +16,4 @@ protected:
     virtual void BuildWindow();
 private:
     CEditText *fEditText;
-}
+};
