@@ -80,7 +80,9 @@ resource 'vers' (2) { 0x1,
 
  resource 'MENU' (2, "File", preload) { 
     2,
-    textMenuProc, 0x7FFFFFFE, enabled,
+    textMenuProc,
+    0x7FFFFFFE,
+    enabled,
     "File", 
     {
         "Close#4", noIcon, "W", noMark, plain,

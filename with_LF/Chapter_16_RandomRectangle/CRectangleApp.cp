@@ -3,7 +3,7 @@
 
 
 
-// Copyright© 1993-94, Neil Rhodes and Julie McKeehan. All rights reserved. 
+// Copyright © 1993-94, Neil Rhodes and Julie McKeehan. All rights reserved. 
 
 /*****
 * CRectangleApp.cp
@@ -20,8 +20,7 @@ const Size kRainyDayFund = 45000;
 const Size kCriticalBalance = 40000;
 const Size kToolboxBalance = 20000;
 
-CRectangleApp::CRectangleApp() : CApplication(kExtraMasters, kRainyDayFund,
-kCriticalBalance, kToolboxBalance)
+CRectangleApp::CRectangleApp() : CApplication(kExtraMasters, kRainyDayFund, kCriticalBalance, kToolboxBalance)
 {
     TCL_END_CONSTRUCTOR
 }
@@ -35,7 +34,7 @@ void CRectangleApp::StartUpAction(short numPreloads)
     const Boolean kFitHorizontal = TRUE;
     const Boolean kFitVertical = TRUE;
   
-    CDirector *aDirector =new CDirector(this);
+    CDirector *aDirector = new CDirector(this);
 
     CWindow *aWindow =new CWindow(kWINDResourceID, !kWindowFloats, aDirector); 
     aDirector->itsWindow = aWindow;
