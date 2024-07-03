@@ -37,7 +37,7 @@ void CSaveRestoreSizeWindow::SpecifyFile(CFile *aFile) {
 }
 
 void CSaveRestoreSizeWindow::StoreInfoInFile(CDataFile *aFile) {
-    if (!aFile->ExistsOnDisk()) aFile->CreateNew('C++5', 'PREF');
+    if (!aFile->ExistsOnDisk()) aFile->CreateNew('C++6', 'PREF');
 
     aFile->Open(fsWrPerm);
 
