@@ -140,7 +140,7 @@ resource 'MENU' (1, "Apple", preload) {
     enabled,
     apple,
     {
-        "About TextTyper_#256", noIcon, noKey, noMark, plain, 
+        "About PICTPeeker_#256", noIcon, noKey, noMark, plain, 
         "-", noIcon, noKey, noMark, plain
     }
 };
@@ -209,7 +209,7 @@ resource 'DITL' (1024, "kAlertResourceID") {
         StaticText { 
             disabled,
             "^0, from Symantec C++ Programming for the Macintosh, 1993-94"
-             "y Neil Rhodes and Julie McKeehan, Brady Books"
+             " by Neil Rhodes and Julie McKeehan, Brady Books"
         },
         {116, 147, 136, 205},
         Button { 
