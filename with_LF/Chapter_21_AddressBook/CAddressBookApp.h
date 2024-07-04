@@ -16,7 +16,8 @@ If you change the name of the application, a fresh version of this file will be 
 #include "x_CAddressBookApp.h" 
 #include <CDialog.h>
 
-class CAddressBookApp public x_CAddressBookApp {
+class CAddressBookApp : public x_CAddressBookApp 
+{
 public:
     TCL_DECLARE_CLASS
     void ICAddressBookApp(void);
@@ -39,4 +40,4 @@ public:
 #define kFileType1    'ADDR'
 #define kFileType2    'TEXT'
 #define kFileType3    'TEXT'
-#define kFileType4 'TEXT'
+#define kFileType4    'TEXT'

@@ -14,25 +14,32 @@ with the old name, you will have to copy those changes to the new file by hand.
 
 
 #pragma once
+
 #include "x_CAddressBookDoc.h"
 #include "CStreamableDatabase.h"
 #include "Entry.h"
 
-class CAddressBookDoc public x_CAddressBookDoc
-{ public:
+class CAddressBookDoc : public x_CAddressBookDoc
+{ 
+public:
 
-TCL_DECLARE_CLASS
-void ICAddressBookDoc(void);
-virtual void MakeNewContents(void); 
-virtual void ContentsToWindow(void);
-virtual Titerator *CreateDatabaselterator(); 
-virtual void AddEntry(TEntry *entry);
-canst long kReasonNewEntry =1001;
-// If you have multiple document classes, you must change
-// the file type below to the appropriate type for this class. 
-// If not, this #define is not used.
+    TCL_DECLARE_CLASS
 
+    void ICAddressBookDoc(void);
+
+    virtual void MakeNewContents(void); 
+    virtual void ContentsToWindow(void);
+
+    virtual TIterator *CreateDatabaseIterator(); 
+    virtual void AddEntry(TEntry *entry);
 };
+
+const long kReasonNewEntry =1001;
+
+    // If you have multiple document classes, you must change
+    // the file type below to the appropriate type for this class. 
+    // If not, this #define is not used.
+
 #define CAddressBookDocFType 'ADDR'
 
 

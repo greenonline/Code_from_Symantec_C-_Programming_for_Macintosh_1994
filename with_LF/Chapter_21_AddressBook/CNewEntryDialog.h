@@ -20,13 +20,14 @@ If you change the name of the dialog class, a fresh version of this file will be
 
  with the old name, you will have to copy those changes to the new file by hand.
 ******************************************************************************/
+
 #pragma once
 
 #include "x_CNewEntryDialog.h"
 
 class CDirectorOwner;
 
-class CNewEntryDialog public x_CNewEntryDialog {
+class CNewEntryDialog : public x_CNewEntryDialog {
 public:
     TCL_DECLARE_CLASS
     // Insert your own public data members here
