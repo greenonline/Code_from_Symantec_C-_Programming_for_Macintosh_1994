@@ -3,6 +3,8 @@ Code from the book "Symantec C++ Programming for Macintosh", 2nd Edition, by Nei
 
 Note: Two directories are provided, both of which contain the same source code. One uses line feeds (LF) (for reading on OS X), the other uses carriage returns (CR) for Macintosh.
 
+As there doesn't appear to be a copy of the disk that came with the book available on the web, at the time of writing, I thought that I would provide the code here. This is a "best guess" effort and may not be *exactly* the same as the original source disk, but the examples all compile and run (more or less).
+
 See also:
 
 - [Source code for Symantec C++ Programming for Macintosh (1994)](https://gr33nonline.wordpress.com/2024/05/04/source-code-for-symantec-c-programming-for-macintosh-1994/)
