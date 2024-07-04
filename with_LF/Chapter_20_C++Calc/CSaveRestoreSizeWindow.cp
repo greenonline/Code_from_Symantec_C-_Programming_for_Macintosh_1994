@@ -19,25 +19,28 @@ CQuitOnCloseWindow(windID, aFloating, aSupervisor)
     SpecifyFile(fDataFile); 
     SetInfoFromFile(fDataFile); 
     TCL_END_CONSTRUCTOR;
-
 }
 
-CSaveRestoreSizeWindow::~CSaveRestoreSizeWindow() {
+CSaveRestoreSizeWindow::~CSaveRestoreSizeWindow()
+{
     TCL_START_DESTRUCTOR; 
     StoreInfoInFile(fDataFile); 
     TCLForgetObject(fDataFile);
 }
 
-void CSaveRestoreSizeWindow::SpecifyFile(CFile *aFile) {
+void CSaveRestoreSizeWindow::SpecifyFile(CFile *aFile)
+{
     short vRefNum;
     long dirID;
 
     FailOSErr(FindFolder(kOnSystemDisk, kPreferencesFolderType, kCreateFolder, &vRefNum,&dirID));
-    aFile->SpecifyHFS("\pTick-Tock Preferences", vRefNum, dirID);
+    aFile->SpecifyHFS("\pCalculator Preferences", vRefNum, dirID);
 }
 
-void CSaveRestoreSizeWindow::StoreInfoInFile(CDataFile *aFile) {
-    if (!aFile->ExistsOnDisk()) aFile->CreateNew('C++6', 'PREF');
+void CSaveRestoreSizeWindow::StoreInfoInFile(CDataFile *aFile)
+{
+    if (!aFile->ExistsOnDisk())
+        aFile->CreateNew('C++6', 'PREF');
 
     aFile->Open(fsWrPerm);
 
@@ -52,13 +55,13 @@ void CSaveRestoreSizeWindow::StoreInfoInFile(CDataFile *aFile) {
     }
     CATCH { 
         NO_PROPAGATE;  // not writing window location isn't fatal
-
     }
     ENDTRY; 
     aFile->Close();
 }
 
-void CSaveRestoreSizeWindow::SetInfoFromFile(CDataFile *aFile) {
+void CSaveRestoreSizeWindow::SetInfoFromFile(CDataFile *aFile)
+{
     if (aFile->ExistsOnDisk()) { 
         Rect portRect;
 
