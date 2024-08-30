@@ -1,6 +1,10 @@
 # Code_from_Symantec_C-_Programming_for_Macintosh_1994
 Code from the book "Symantec C++ Programming for Macintosh", 2nd Edition, by Neil Rhodes
 
+[![Cover art][1]][1]
+
+  [1]: https://raw.githubusercontent.com/greenonline/Code_from_Symantec_C-_Programming_for_Macintosh_1994/main/misc/Symantec%20C%2B%2B%20book%20cover.jpg "Cover art"
+
 Note: Two directories are provided, both of which contain the same source code. One uses line feeds (LF) (for reading on OS X), the other uses carriage returns (CR) for Macintosh.
 
 As there doesn't appear to be a copy of the disk that came with the book available on the web, at the time of writing, I thought that I would provide the code here. This is a "best guess" effort and may not be *exactly* the same as the original source disk, but the examples all compile and run (more or less).
